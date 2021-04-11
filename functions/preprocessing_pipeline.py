@@ -43,7 +43,7 @@ def preprocess_data(X):
     cat_pipeline = Pipeline([
             ('column_remover', ColumnRemover(0.1)),
             ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
-            ('OneHot_encoder', OneHotEncoder(sparse=False,handle_unknown='ignore',drop='first'))
+            ('OneHot_encoder', OneHotEncoder(sparse=False,handle_unknown='ignore'))
     ])
 
     preprocessor = ColumnTransformer([
