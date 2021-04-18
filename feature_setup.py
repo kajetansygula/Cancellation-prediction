@@ -42,7 +42,7 @@ class ColumnRemover(TransformerMixin,BaseEstimator):
 # Standarization
         
 # Importing dataset
-df = pd.read_csv("hotel_bookings.csv")
+df = pd.read_csv("data/hotel_bookings.csv")
 
 # Reading data only for 'City' hotel
 city_df = df[df['hotel'] == 'City Hotel'].reset_index(drop=True).drop('hotel',axis=1)
