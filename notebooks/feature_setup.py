@@ -6,6 +6,9 @@ Created on Wed Mar 17 20:53:30 2021
 @author: Kajetan
 """
 import pandas as pd
+from src.features.preprocessing_pipeline import preprocess_data
+
+
 
 from sklearn.pipeline import Pipeline
 from sklearn.base import TransformerMixin, BaseEstimator
@@ -16,7 +19,23 @@ from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression # for testing
 from sklearn.model_selection import train_test_split # for testing
 
+import pandas as pd
+# Importing dataset
+df = pd.read_csv("src/data/hotel_bookings.csv")
+# Reading data only for 'City' hotel
+#city_df = df[df['hotel'] == 'City Hotel'].reset_index(drop=True).drop('hotel',axis=1)
+# Removing 'reservation_status' column to avoid 'cheating'
+#city_df.drop('reservation_status', axis=1, inplace=True)
+# Setting up X and y
+#y = city_df.iloc[:,0]
+#X = city_df.iloc[:,1:]
+
+#test = preprocess_data(X)
+#print('finished.')
+"""
 # Classes
+
+
 
 # Transformer to remove columns with equal of higher of specified % of missing columns
 class ColumnRemover(TransformerMixin,BaseEstimator):
@@ -42,7 +61,7 @@ class ColumnRemover(TransformerMixin,BaseEstimator):
 # Standarization
         
 # Importing dataset
-df = pd.read_csv("data/hotel_bookings.csv")
+df = pd.read_csv("src/data/hotel_bookings.csv")
 
 # Reading data only for 'City' hotel
 city_df = df[df['hotel'] == 'City Hotel'].reset_index(drop=True).drop('hotel',axis=1)
@@ -90,9 +109,7 @@ clf = Pipeline(steps=[('preprocessor', preprocessor),
 clf.fit(X_train, y_train)
 print("model score: %.3f" % clf.score(X_test, y_test))
 
-
-
-
+"""
 # Removing outliers 
 # Standarization
 

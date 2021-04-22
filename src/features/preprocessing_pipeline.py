@@ -51,7 +51,7 @@ def preprocess_data(x):
     return pd.DataFrame(preprocessor.fit_transform(x))
 
 
-def isolationforest_detection(dataframe, columns, contamination, outlier_name='Outliers'):
+def isolationforest_detect(dataframe, columns, contamination, outlier_name='Outliers'):
 
     from sklearn.ensemble import IsolationForest
 
@@ -65,6 +65,3 @@ def isolationforest_detection(dataframe, columns, contamination, outlier_name='O
     dataframe[outlier_name] = preds
 
     print(dataframe[outlier_name].value_counts())
-
-
-test = 1
