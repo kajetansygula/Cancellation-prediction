@@ -4,16 +4,16 @@ Created on Sun Apr 11 16:32:48 2021
 @author: Kajetan
 """
 
+import pandas as pd
+
+from sklearn.pipeline import Pipeline
+from sklearn.base import TransformerMixin, BaseEstimator
+from sklearn.preprocessing import (MinMaxScaler, OneHotEncoder)
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+
 
 def preprocess_data(x):
-    
-    import pandas as pd
-    
-    from sklearn.pipeline import Pipeline
-    from sklearn.base import TransformerMixin, BaseEstimator
-    from sklearn.preprocessing import (StandardScaler, OneHotEncoder)
-    from sklearn.impute import SimpleImputer
-    from sklearn.compose import ColumnTransformer
         
     class ColumnRemover(TransformerMixin, BaseEstimator):
     
@@ -34,7 +34,7 @@ def preprocess_data(x):
     num_pipeline = Pipeline([
             ('column_remover', ColumnRemover(0.1)),
             ('imputer', SimpleImputer(strategy='median')),
-            ('std_scaler', StandardScaler()) 
+            ('std_scaler', MinMaxScaler())
     ])
     
     cat_pipeline = Pipeline([

@@ -11,4 +11,8 @@ city_df['total_booked_nights'] = city_df['stays_in_weekend_nights'] + city_df['s
 
 city_df.drop('hotel', axis=1, inplace=True)
 
+# Removing 'reservation_status' column to avoid 'cheating'
+city_df.drop('reservation_status', axis=1, inplace=True)
+
+# Saving new CSV file in the final directory
 city_df.to_csv('../../data/city_dataframe.csv', index=False, encoding='utf-8')
